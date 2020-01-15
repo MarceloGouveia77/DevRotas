@@ -9,6 +9,13 @@ module.exports = {
         return response.json(devs);
     },
 
+    async show(request, response) {
+        const { github_username } = request.query;
+        const devs = await Dev.find({
+            github_username,
+        })
+        return response.json(devs);
+    },
 
     async store(request, response) {
         const { github_username, techs, latitude, longitude } = request.body;
